@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CartWindow</class>
+ <widget class="QMainWindow" name="CartWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>650</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Корзина</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{background:#FFF;font-family:'Times New Roman'} QPushButton{background:#00FA9A;padding:8px;border:none} QPushButton:hover{background:#2E8B57;color:#FFF} QTableWidget{alternate-background-color:#7FFF00}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTableWidget" name="cartTable">
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <attribute name="horizontalHeaderVisible">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Название</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Цена</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Количество</string>
+       </property>
+      </column>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="bottomLayout">
+      <item>
+       <widget class="QLabel" name="totalLabel">
+        <property name="text">
+         <string>Итого: 0.00 руб.</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font-size:16px;font-weight:bold</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="clearButton">
+        <property name="text">
+         <string>Очистить корзину</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="checkoutButton">
+        <property name="text">
+         <string>Оформить заказ</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+</ui>

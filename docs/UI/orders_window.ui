@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OrdersWindow</class>
+ <widget class="QMainWindow" name="OrdersWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Заказы клиентов</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{background:#FFF;font-family:'Times New Roman'} QPushButton{background:#00FA9A;border:none;padding:5px} QPushButton:hover{background:#2E8B57;color:#FFF} QTableWidget{alternate-background-color:#7FFF00}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="buttonLayout">
+      <item>
+       <widget class="QPushButton" name="addButton">
+        <property name="text">
+         <string>Добавить заказ</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="editButton">
+        <property name="text">
+         <string>Редактировать</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="deleteButton">
+        <property name="text">
+         <string>Удалить</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QTableWidget" name="ordersTable">
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <attribute name="horizontalHeaderVisible">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Клиент</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Статус</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Адрес</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Дата заказа</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Дата выдачи</string>
+       </property>
+      </column>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+</ui>

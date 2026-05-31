@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ProductForm</class>
+ <widget class="QDialog" name="ProductForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>650</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>500</width>
+    <height>650</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Добавление товара</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog{background:#FFF;font-family:'Times New Roman'} QLineEdit,QComboBox,QTextEdit{background:#7FFF00} QPushButton{background:#00FA9A;border:none;padding:8px} QPushButton:hover{background:#2E8B57;color:#FFF}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="titleLabel">
+     <property name="text">
+      <string>Добавление товара</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size:16px;font-weight:bold</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="nameLabel">
+       <property name="text">
+        <string>Наименование:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="nameEdit"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="categoryLabel">
+       <property name="text">
+        <string>Категория:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="categoryCombo"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="manufacturerLabel">
+       <property name="text">
+        <string>Производитель:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="manufacturerCombo"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="supplierLabel">
+       <property name="text">
+        <string>Поставщик:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QComboBox" name="supplierCombo"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="unitLabel">
+       <property name="text">
+        <string>Единица измерения:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="unitEdit">
+       <property name="text">
+        <string>шт</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="descriptionLabel">
+       <property name="text">
+        <string>Описание:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QTextEdit" name="descriptionEdit">
+       <property name="maximumHeight">
+        <number>80</number>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="priceLabel">
+       <property name="text">
+        <string>Цена (руб.):</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QLineEdit" name="priceEdit"/>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="stockLabel">
+       <property name="text">
+        <string>Кол-во (шт):</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QLineEdit" name="stockEdit"/>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="discountLabel">
+       <property name="text">
+        <string>Скидка (%):</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QLineEdit" name="discountEdit"/>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="imageLabel">
+       <property name="text">
+        <string>Фото:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QLabel" name="imagePreview">
+       <property name="text">
+        <string>Нет фото</string>
+       </property>
+       <property name="fixedSize">
+        <size>
+         <width>150</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border:1px solid #7FFF00;background:#f0f0f0</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="1">
+      <widget class="QPushButton" name="imageButton">
+       <property name="text">
+        <string>Выбрать фото</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="buttonLayout">
+     <item>
+      <widget class="QPushButton" name="okButton">
+       <property name="text">
+        <string>Сохранить</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancelButton">
+       <property name="text">
+        <string>Отмена</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+</ui>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OrderDialog</class>
+ <widget class="QDialog" name="OrderDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>450</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="fixedSize">
+   <size>
+    <width>450</width>
+    <height>400</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Добавление заказа</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog{background:#FFF;font-family:'Times New Roman'} QLineEdit,QComboBox,QDateEdit{background:#7FFF00} QPushButton{background:#00FA9A;border:none;padding:8px} QPushButton:hover{background:#2E8B57;color:#FFF}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="titleLabel">
+     <property name="text">
+      <string>Добавление заказа</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size:16px;font-weight:bold</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="clientLabel">
+       <property name="text">
+        <string>Клиент:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QComboBox" name="clientCombo"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="statusLabel">
+       <property name="text">
+        <string>Статус:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="statusCombo">
+       <item>
+        <property name="text">
+         <string>Новый</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>В обработке</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Готов к выдаче</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Выдан</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="addressLabel">
+       <property name="text">
+        <string>Адрес:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="addressEdit">
+       <property name="placeholderText">
+        <string>Адрес пункта выдачи</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="orderDateLabel">
+       <property name="text">
+        <string>Дата заказа:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QDateEdit" name="orderDateEdit">
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="issueDateLabel">
+       <property name="text">
+        <string>Дата выдачи:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QDateEdit" name="issueDateEdit">
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="buttonLayout">
+     <item>
+      <widget class="QPushButton" name="okButton">
+       <property name="text">
+        <string>Сохранить</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancelButton">
+       <property name="text">
+        <string>Отмена</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+</ui>
