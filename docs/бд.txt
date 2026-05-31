@@ -1,0 +1,157 @@
+CREATE DATABASE shoes_store
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_unicode_ci;
+
+USE shoes_store;
+
+-- =====================================================
+-- 1. ТАБЛИЦА ПОЛЬЗОВАТЕЛЕЙ (Users)
+-- =====================================================
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY AUTO_INCREMENT,
+    Login VARCHAR(100) NOT NULL UNIQUE,
+    Password VARCHAR(255) NOT NULL,
+    FullName VARCHAR(255),
+    Role VARCHAR(50) DEFAULT 'client'
+);
+
+-- =====================================================
+-- 2. ТАБЛИЦА КАТЕГОРИЙ (Categories)
+-- =====================================================
+CREATE TABLE Categories (
+    CategoryID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100) NOT NULL UNIQUE
+);
+
+-- =====================================================
+-- 3. ТАБЛИЦА ПРОИЗВОДИТЕЛЕЙ (Manufacturers)
+-- =====================================================
+CREATE TABLE Manufacturers (
+    ManufacturerID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100) NOT NULL UNIQUE
+);
+
+-- =====================================================
+-- 4. ТАБЛИЦА ПОСТАВЩИКОВ (Suppliers)
+-- =====================================================
+CREATE TABLE Suppliers (
+    SupplierID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100) NOT NULL UNIQUE
+);
+
+-- =====================================================
+-- 5. ТАБЛИЦА ТОВАРОВ (Products)
+-- =====================================================
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100) NOT NULL,
+    CategoryID INT,
+    ManufacturerID INT,
+    SupplierID INT,
+    Price DECIMAL(10, 2) NOT NULL DEFAULT 0,
+    StockQuantity INT NOT NULL DEFAULT 0,
+    Unit VARCHAR(10) DEFAULT 'шт',
+    Discount DECIMAL(5, 2) DEFAULT 0.00,
+    Description TEXT,
+    ImagePath VARCHAR(255),
+    FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID),
+    FOREIGN KEY (ManufacturerID) REFERENCES Manufacturers(ManufacturerID),
+    FOREIGN KEY (SupplierID) REFERENCES Suppliers(SupplierID)
+);
+
+-- =====================================================
+-- 6. ТАБЛИЦА СТАТУСОВ ЗАКАЗОВ (не используется напрямую, но для данных)
+-- =====================================================
+CREATE TABLE OrderStatuses (
+    StatusID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(50) NOT NULL UNIQUE
+);
+
+-- =====================================================
+-- 7. ТАБЛИЦА ЗАКАЗОВ (Orders)
+-- =====================================================
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY AUTO_INCREMENT,
+    UserID INT,
+    Status VARCHAR(50) DEFAULT 'Новый',
+    DeliveryAddress VARCHAR(255),
+    OrderDate DATE DEFAULT (CURRENT_DATE),
+    IssueDate DATE,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
+
+-- =====================================================
+-- 8. ТАБЛИЦА ТОВАРОВ В ЗАКАЗЕ (OrderItems)
+-- =====================================================
+CREATE TABLE OrderItems (
+    ItemID INT PRIMARY KEY AUTO_INCREMENT,
+    OrderID INT,
+    ProductID INT,
+    Quantity INT NOT NULL,
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID) ON DELETE CASCADE,
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
+
+-- =====================================================
+-- НАЧАЛЬНОЕ ЗАПОЛНЕНИЕ ДАННЫМИ
+-- =====================================================
+
+-- Статусы заказов
+INSERT INTO OrderStatuses (Name) VALUES
+('Новый'),
+('В обработке'),
+('Готов'),
+('Выдан'),
+('Отменен');
+
+-- Пользователи
+INSERT INTO Users (Login, Password, FullName, Role) VALUES
+('admin', 'admin', 'Абакаров Магомед Камильевич', 'admin'),
+('manager', 'manager', 'Михаш Михаил Романович', 'manager'),
+('client', 'client', 'Пучков Максим Ильич', 'client');
+
+-- Категории
+INSERT INTO Categories (Name) VALUES
+('Туфли'),
+('Кроссовки'),
+('Сапоги'),
+('Ботинки'),
+('Сандалии');
+
+-- Производители
+INSERT INTO Manufacturers (Name) VALUES
+('Palermo'),
+('Adidas'),
+('ECCO'),
+('Nike'),
+('Reebok');
+
+-- Поставщики
+INSERT INTO Suppliers (Name) VALUES
+('Италия'),
+('Германия'),
+('США'),
+('Китай'),
+('Вьетнам');
+
+-- Товары
+INSERT INTO Products (Name, CategoryID, ManufacturerID, SupplierID, Price, StockQuantity, Discount, Description, ImagePath) VALUES
+('Palermo Brown', 1, 1, 1, 7600.00, 13, 5.00, 'Классические туфли Palermo коричневые', 'images/palermo.jpg'),
+('Adidas Black Row', 2, 2, 2, 15500.00, 23, 45.00, 'Кроссовки Adidas Black Row', 'images/black_row.jpg'),
+('ECCO Winter', 3, 3, 3, 9800.00, 5, 0.00, 'Зимние сапоги ECCO', 'images/ecco.jpg'),
+('Nike Air Max', 2, 4, 4, 12500.00, 17, 10.00, 'Кроссовки Nike Air Max', 'images/nike.jpg'),
+('Reebok Classic', 2, 5, 5, 8900.00, 12, 15.00, 'Кроссовки Reebok Classic', 'images/reebok.jpg');
+
+-- Заказы (пример)
+INSERT INTO Orders (UserID, Status, DeliveryAddress, OrderDate, IssueDate) VALUES
+(3, 'Новый', 'г. Москва, ул. Тверская, д.15', '2025-01-15', NULL),
+(3, 'В обработке', 'г. СПб, Невский пр., д.25', '2025-01-20', NULL),
+(1, 'Готов', 'г. Казань, ул. Баумана, д.5', '2025-01-10', '2025-01-18');
+
+-- Товары в заказах
+INSERT INTO OrderItems (OrderID, ProductID, Quantity) VALUES
+(1, 1, 2),
+(1, 2, 1),
+(2, 3, 1),
+(3, 4, 1);
+
